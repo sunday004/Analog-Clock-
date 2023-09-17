@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        .frame{
+            width: 400px;
+            height: 400px;
+            background-color:blue;
+            border-radius: 50%;
+            position: relative;
+            border-width: 5px;
+            border-style: solid;
+            border-color: yellow;
+        }
+        .second{
+            background-color: red;
+            height: 150px;
+            width: 4px;
+            position: absolute;
+            bottom: 50%;
+            right: 198px;
+            z-index: 10;
+            transform-origin: bottom;
+        }
+        .minute{
+            background-color: black;
+            height: 130px;
+            width: 6px;
+            position: absolute;
+            bottom: 50%;
+            right: 197px;
+            z-index: 20;
+            transform-origin: bottom;
+        }
+        .hour{
+            background-color: black;
+            height: 70px;
+            width: 6px;
+            position: absolute;
+            bottom: 50%;
+            right: 197px;
+            z-index: 25;
+            transform-origin: bottom;
+        }
+        .pin{
+            background-color: yellow;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 195px;
+            right: 195px;
+            z-index: 30;
+        }
+        .numbers div{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: white;
+        }
+        .numbers .one{
+            transform: rotate(30deg);
+        }
+        .numbers .two{
+            transform: rotate(60deg);
+        }
+        .numbers .three{
+            transform: rotate(90deg);
+        }
+        .numbers .four{
+            transform: rotate(120deg);
+        }
+        .numbers .five{
+            transform: rotate(150deg);
+        }
+        .numbers .six{
+            transform: translateY(383px);
+        }
+        .numbers .seven{
+            transform: rotate(210deg);
+        }
+        .numbers .eight{
+            transform: rotate(240deg);
+        }
+        .numbers .nine{
+            transform: rotate(270deg);
+        }
+        .numbers .ten{
+            transform: rotate(300deg);
+        }
+        .numbers .eleven{
+            transform: rotate(330deg);
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div class="frame">
+    <div class="minute"></div>
+    <div class="second"></div>
+    <div class="hour"></div>
+    <div class="pin"></div>
+
+    <div class="numbers">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+    <div class="six">6</div>
+    <div class="seven">7</div>
+    <div class="eight">8</div>
+    <div class="nine">9</div>
+    <div class="ten">10</div>
+    <div class="eleven">11</div>
+    <div class="twelve">12</div>
+   </div>  
+    </div>
+    
+    <h1>MY WALL CLOCK</h1>
+    </center>
+
+    <script>
+        const sec=document.querySelector('.second')
+        const min=document.querySelector('.minute')
+        const hr=document.querySelector('.hour')
+
+        
+        function move(){
+            var date= new Date
+        
+            var seconds=date.getSeconds()
+            var minutes=date.getMinutes()
+            var hour=date.getHours()
+            
+            sec.style.setProperty('transform',`rotate(${seconds*6}deg)`);
+            
+            min.style.setProperty('transform',`rotate(${minutes*6+seconds*0.1}deg)`);
+            
+            hr.style.setProperty('transform',`rotate(${hour*30+minutes*0.5}deg)`);
+        }
+
+        setInterval(move,1000)
+    
+        move()
+    </script>
+</body>
+</html>
